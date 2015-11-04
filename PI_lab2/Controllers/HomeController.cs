@@ -6,25 +6,20 @@ using System.Web.Mvc;
 
 namespace PI_lab2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Account", "Login");
         }
 
-        public ActionResult About()
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        public ActionResult UserList()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            
         }
     }
 }
