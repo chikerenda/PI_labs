@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PI_lab2.Models.AccountModels
+namespace PI_lab2.Models
 {
     public class LoginModel
     {

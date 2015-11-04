@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using PI_lab2.Data;
-using PI_lab2.Models.AccountModels;
-using PI_lab2.PIMembership;
+using PI_lab2.MembershipPi;
+using PI_lab2.Models;
 
 namespace PI_lab2.Controllers
 {

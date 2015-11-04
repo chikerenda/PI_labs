@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 
-namespace PI_lab2.PIMembership
+namespace PI_lab2.MembershipPi
 {
     public class PiRoleProvider : RoleProvider
     {

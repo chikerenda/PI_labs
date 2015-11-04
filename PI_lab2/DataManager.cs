@@ -1,4 +1,4 @@
-﻿namespace PI_lab2.Data
+﻿namespace PI_lab2
 {
     public static class DataManager
     {
