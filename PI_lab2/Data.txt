@@ -1,0 +1,1 @@
+[{"Login":"Vasya","FullName":"Vasiliy","Email":"vasya@gmail.com","Password":"1234","IsAdmin":false},{"Login":"constantine","FullName":"Constantine Chikerenda","Email":"constantine.chik@gmail.com","Password":"123","IsAdmin":true}]

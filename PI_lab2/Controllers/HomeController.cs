@@ -8,14 +8,7 @@ namespace PI_lab2.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return RedirectToAction("Account", "Login");
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public ActionResult UserList()
-        {
-            
+            return RedirectToAction("Index", "User");
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Security;
+using PI_lab2.Models.DataModels;
 
 namespace PI_lab2.MembershipPi
 {
@@ -11,12 +12,16 @@ namespace PI_lab2.MembershipPi
             throw new NotImplementedException();
         }
 
-        public MembershipUser CreateUser(string email, string password, string nickname)
+        public MembershipUser CreateUser(string email, string password, string login)
         {
-            //var client = new MembershipServiceClient();
-            //client.CreateUser(email, password, nickname);
-            //var membershipUser = GetUser(email, false);
-            //return membershipUser;
+            DataManager.AddUser(new User
+            {
+                Login = login,
+                Password = password,
+                Email = email
+            });
+            var membershipUser = GetUser(login, false);
+            return membershipUser;
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion,
@@ -45,10 +50,9 @@ namespace PI_lab2.MembershipPi
             throw new NotImplementedException();
         }
 
-        public override bool ValidateUser(string email, string password)
+        public override bool ValidateUser(string login, string password)
         {
-            //var client = new MembershipServiceClient();
-            //return client.ValidateUser(email, password);
+            return DataManager.ValidateUser(login, password);
         }
 
         public override bool UnlockUser(string userName)
@@ -61,12 +65,11 @@ namespace PI_lab2.MembershipPi
             throw new NotImplementedException();
         }
 
-        public override MembershipUser GetUser(string email, bool userIsOnline)
+        public override MembershipUser GetUser(string login, bool userIsOnline)
         {
-            //var client = new MembershipServiceClient();
-            //var user = client.GetUser(email);
-            //return new MembershipUser("SmartMicrowaveMembershipProvider", user.Email, null, null, null, null,
-            //        false, false, user.RegisterTime, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
+            var user = DataManager.GetUser(login);
+            return new MembershipUser(nameof(PiMembershipProvider), user.Login, null, null, null, null,
+                    false, false, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
         }
 
         public override string GetUserNameByEmail(string email)

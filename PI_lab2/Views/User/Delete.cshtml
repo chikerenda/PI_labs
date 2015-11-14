@@ -1,0 +1,14 @@
+﻿@model PI_lab2.Models.DeleteModel
+
+<h1>Are you sure you want to delete user "@Model.Login"?</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.Login)
+
+    @Html.ActionLink("Do not delete", "Index", null, new { @class = "btn btn-default" })
+
+    <input type="submit" value="Delete" class="btn btn-danger"/>
+}

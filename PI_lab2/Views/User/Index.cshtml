@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PI_lab2.Models.DataModels.User>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        @if (User.IsInRole("Admin"))
+        {
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+        }
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @if (User.IsInRole("Admin"))
+        {
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+        }
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        @if (User.IsInRole("Admin") || User.Identity.Name == item.Login)
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {login = item.Login}) |
+                @Html.ActionLink("Delete", "Delete", new {login = item.Login})
+            </td>
+        }
+    </tr>
+}
+
+</table>

@@ -5,22 +5,20 @@ namespace PI_lab2.MembershipPi
 {
     public class PiRoleProvider : RoleProvider
     {
-        public override string[] GetRolesForUser(string nickname)
+        public override string[] GetRolesForUser(string login)
         {
-            //var client = new MembershipServiceClient();
-            //return client.GetRolesForUser(nickname);
+            var role = DataManager.GetUserRole(login);
+            return role == null ? null : new[] {role};
         }
 
         public override void CreateRole(string roleName)
         {
-            //var client = new MembershipServiceClient();
-            //client.CreateRole(roleName);
+            DataManager.CreateRole(roleName);
         }
 
-        public override bool IsUserInRole(string nickname, string roleName)
+        public override bool IsUserInRole(string login, string roleName)
         {
-            //var client = new MembershipServiceClient();
-            //return client.IsUserInRole(nickname, roleName);
+            return DataManager.UserInRole(login, roleName);
         }
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
